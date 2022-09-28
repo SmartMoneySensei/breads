@@ -8,4 +8,10 @@ body {
     margin: auto;
   }
   
+  h2 {
+    background-color: aqua;
+  }
   
+  h3 {
+    background-color: chartreuse;
+  }
