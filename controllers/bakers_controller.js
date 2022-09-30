@@ -1,5 +1,6 @@
 // dependencies
 const express = require('express')
+const res = require('express/lib/response')
 const baker = express.Router()
 const Baker = require('../models/baker.js')
 const bakerSeedData = require('../models/baker_seed.js')
@@ -24,6 +25,13 @@ baker.get('/:id', (req, res) => {
         })
 })
 
+// Delete
+baker.delete('/:id', (req,res)=> {
+    Baker.findByIdAndDelete(req.params.id)
+        .then(deletedBaker => {
+            res.status(303).redirect('/breads')
+        })
+})
 
 baker.get('/data/seed', (req, res) => {
     Baker.insertMany(bakerSeedData)
